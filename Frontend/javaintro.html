@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <p id="text">Hello Guys</p>
+    <button onclick="Fun()">Click</button>
+    <script>
+        function Fun(){
+            document.getElementById("text").innerText="Hi";
+        }
+    </script> -->
+    <!-- <button onclick="alert('Hello developers')">Greet</button> -->
+    <form name="reg_form" onsubmit="return is_eligible()" action="Index.html">
+        <label>age</label>
+        <input type="number" name="age" id="age">
+        <span id="error_msg" style="color: red;">
+        </span>
+        <br><br>
+        <input type="submit" value="Register">
+        <!-- <button onclick="is_eligible()">check</button> -->
+   </form>
+    <script>
+         function is_eligible(){
+            // let person_age= document.getElementById("age").value
+            let my_form=document.forms['reg_form']
+            let person_age=my_form['age'].value
+            let error=document.getElementById("error_msg")
+            if (person_age>=18){
+                // alert("Eligible to vote")
+                return true
+            }
+            else{
+                error.textContent="Age must be greater than or equal to 18"
+                // alert("not eligible to vote")
+                return false
+            }
+
+
+}
+    </script>
+</body>
+</html>

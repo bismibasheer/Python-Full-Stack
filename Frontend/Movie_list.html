@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie list</title>
+    <style>
+        .movie-section{
+            display:flex;
+            flex-wrap:wrap;
+            gap:50px;
+            margin: 50px;
+            
+        }
+        .movie-card{
+            width:16rem;
+            height: 350px;
+            border: 1px solid grey;
+        }
+        .poster{
+            width: inherit;
+            height: 250px;
+        }
+    </style>
+</head>
+<body>
+    <form onsubmit="handleSearch()">
+        <input type="text" name="search" id="search">
+        <input type="submit" value="search">
+    </form>
+    <div class="movie-section" id="movie-section"></div>
+    <script>
+        function handleSearch(){
+        event.preventDefault()  //Preventing page reload while submitting
+        console.log("Searching")
+        let search_term=document.getElementById("search").value;  //Fetching value from input field
+        let movie_section=document.getElementById("movie-section")
+        movie_section.innerHTML=""; //Clearing previous results from movie -section div
+        fetch(`https://imdb.iamidiotareyoutoo.com/search?q=${search_term}`)
+        .then(response=>response.json())
+        .then(response=>{
+            response.description.forEach((movie)=>{
+                let my_div=document.createElement('div') //creating new div
+                my_div.className="movie-card"  //providing class name to created div
+                //Inserting contents to newly created div tag(my_div)
+                my_div.innerHTML=`<img src="${movie["#IMG_POSTER"]}" class="poster">
+                <p>${movie["#TITLE"]}</p>`
+
+                //Inserting my_div to movie_
+                movie_section.appendChild(my_div)
+           
+        })
+    })
+} 
+    
+
+    </script>
+</body>
+</html>

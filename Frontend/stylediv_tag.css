@@ -1,0 +1,17 @@
+h1{
+            color:green;
+            text-align: center;
+        }
+        #main-heading{
+            color:blue;
+        }
+
+        #vechicle li{
+            color:pink;
+        }
+        #Place li{
+            color:red
+        }
+        .div-content .para{
+            font-style:italic
+        }

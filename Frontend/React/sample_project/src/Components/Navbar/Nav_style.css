@@ -1,0 +1,32 @@
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+a{
+    text-decoration: none;
+}
+.logo{
+    font-weight: bold;
+    font-size: 20px;
+}
+nav{
+    display: flex;
+    padding: 20px;
+    justify-content: space-between;
+    background-color: rgba(54, 217, 144, 0.511);
+    z-index: 1000;
+}
+.nav-links li a{
+    color: black;
+}
+.nav-links li a:hover{
+    color: green;
+    font-weight: bolder;
+}
+nav ul{
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    gap: 50px;
+}
