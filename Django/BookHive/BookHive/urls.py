@@ -18,8 +18,8 @@ from django.contrib import admin
 from django.urls import path,include
 from django.http import HttpResponse
 from django.shortcuts import render,redirect 
-
-
+from django.conf.urls.static import static
+from django.conf import settings
 
 def testResponse(request):
     return HttpResponse("welcome to BookHive")
@@ -31,5 +31,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("response/",testResponse),
     path('index/',Home),
-    path('',include("manager.urls"))
+    path('manager/',include("manager.urls")),
+    path('',include('credentials.urls')),
 ]
+if settings.DEBUG:
+   urlpatterns+=static(settings.STATIC_URL,document_root=settings.STATIC_ROOT) 
+   urlpatterns+=static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)         

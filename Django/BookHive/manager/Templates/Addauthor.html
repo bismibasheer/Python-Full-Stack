@@ -1,11 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BookHive - Add Author</title>
-</head>
-<body>
-    <h1>Add Author</h1>
-</body>
-</html>
+{% extends 'base.html' %}
+    <title>{% block title %}BookHive - Add Author{% endblock %}</title>
+{% block content %}
+    <h1>
+        Add Author
+    </h1>
+<div>
+        <form method="post" action="{% url 'addall' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div>
+                <label>Author name</label>
+                <input type="text" name="author_name">
+            </div>
+            <div>
+                <label>Place</label>
+                <input type="text" name="place">
+            </div>
+            <div>
+                <label>Date of birth</label>
+                <input type="date" name="dob">
+            </div>
+            <div>
+                <label>Author Image</label>
+                <input type="file" name="picture">
+            </div>
+            <div>
+                <label>About</label><br>
+                <textarea name="about"></textarea>
+            </div>
+            <div>
+                <input type="submit" value="Add Author">
+            </div>
+
+        </form>
+    </div>
+     
+{% endblock %}
+

@@ -1,13 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BookHive - All Author</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+    <title>{% block title %}BookHive - All Author{% endblock %}</title>
+{% block content %}
     <h1>
         All Author
     </h1>
-</body>
-</html>
+    <main id="list-authors">
+        <div class="authors-list">
+             <!-- image,name,place are fields or attributes mentioned in Author Class (model) -->
+        {% for written in authors %}
+        <div class="card">
+            <img src="{{written.image.url}}" >
+            <h4>{{written.name}}</h4>
+            <p>{{written.place}}</p>
+            <a href="{% url 'author-detail' written.slug %}">View Details</a>
+        </div>
+        {% endfor %}
+    </div>
+        </div>
+    </main>
+  
+       
+{% endblock %}

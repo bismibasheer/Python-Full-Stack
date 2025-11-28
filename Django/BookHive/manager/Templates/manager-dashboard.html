@@ -1,18 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BookHive -Manager Dashboard</title>
-</head>
-<body>
-    <nav>
-        <a href="{% url 'dashboard' %}">Dashboard</a>
-        <a href="{% url 'addall' %}">Add Author</a>
-        <a href="{% url 'listall' %}">All Authors</a>
-    </nav>
+{% extends 'base.html' %}
+    <title>{% block title %}BookHive -Manager Dashboard{% endblock %}</title>
+{% block content %}
     <h1>
-        Manager Dashboard
+        Manager Dashboard - {{name}}
     </h1>
-</body>
-</html>
+{% endblock %}

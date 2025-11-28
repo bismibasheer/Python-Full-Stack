@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+    <title>{% block title %}BookHive-Author details{% endblock %}</title>
+{% block content %}
+    <div>
+        <div>
+            <img src="{{author.image.url}}" style="width:200px;height: 250px;" alt="author image">
+        </div>
+        <div>
+            <h2>{{author.name}}</h2>
+            <p>{{author.place}}</p>
+            <p>{{author.dob}}</p>
+            <p>{{author.about}}</p>
+            <a href="{% url 'editauthor' author.slug %}">Edit</a>
+            <a href="{% url 'deleteauthor' author.slug %}" onclick="return confirmDelete()">Delete</a>
+        </div>
+    </div>
+    <script>
+        function confirmDelete(){
+            let choice=confirm("Do you wish to delete {{author.name}} ?")
+            return choice
+        }
+    </script>
+{% endblock %}
