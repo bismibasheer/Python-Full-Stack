@@ -5,5 +5,6 @@ from credentials import views
 urlpatterns = [
     path("register",views.register,name="sign-up"),
     path("",views.signin,name="sign-in"),
+   
 
     ]

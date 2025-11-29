@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from manager.models import Author
 from django.utils.text import slugify
+from django.contrib import auth
 # Create your views here.
 def managerDashboard(request):
     user="Bismi"
@@ -51,3 +52,7 @@ def deleteauthor(request,link):
     writer=Author.objects.get(slug=link)
     writer.delete()
     return redirect("listall")
+
+def logout(request):
+    auth.logout(request)
+    return redirect("sign-in")
