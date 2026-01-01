@@ -32,7 +32,10 @@ urlpatterns = [
     path("response/",testResponse),
     path('index/',Home),
     path('manager/',include("manager.urls")),
+    path('user/',include('user.urls')),
     path('',include('credentials.urls')),
+
+    
 ]
 if settings.DEBUG:
    urlpatterns+=static(settings.STATIC_URL,document_root=settings.STATIC_ROOT) 

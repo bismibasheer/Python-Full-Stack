@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+    <title>{% block title %}BookHive - Book details{% endblock %}</title>
+{% block content %}
+    
+            {% for msg in messages %}
+                <div class="alert alert-{{msg.tags}}" role="alert">
+                    {{msg}}
+                </div>
+                
+            {% endfor %}
+   <div class="row">
+                <div class="col-md-4" >
+                    <img src="{{book.image.url}}" style="width: 250px;">
+                </div>
+            <div class="col-md-8">
+                    <h1>{{book.book}}</h1>
+                    <ul>
+                        <li>Category : {{book.category}}</li>
+                        <li>Author : {{book.author}}</li>
+                        <li>Publish Date : {{book.publish_date}}</li>
+                        <li>Price : {{book.price}}</li>
+                    </ul>
+                    <p>{{book.about}}</p>
+
+
+                   <p>Likes:{{book.likes_count}}</p>
+                   <a href="{% url 'book_like' book.slug %}">{% if is_liked %}<i class="fa-regular fa-thumbs-down"></i>{% else %}<i class="fa-solid fa-thumbs-up"></i>{% endif %}</a>
+
+
+
+
+                    <a href="{% url 'edit_book' book.slug %}" class="btn btn-success">Update Details</a> 
+                       <form method="post" action="{% url 'delete-book' book.slug %}" >
+                        {% csrf_token %}
+                        <input type="submit" class="btn btn-danger" value="Delete Book">
+                       </form>     
+                
+                </div>
+            </div>
+        </div>
+
+    {% endblock %}

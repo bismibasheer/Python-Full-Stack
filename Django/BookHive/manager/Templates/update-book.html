@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+    <title>{% block title %}BookHive - Update Book{% endblock %}</title>
+{% block content %}
+    <h1>
+            {% for msg in messages %}
+                <div class="alert alert-{{msg.tags}}" role="alert">
+                    {{msg}}
+                </div>
+                
+            {% endfor %}
+        Update Book
+    </h1>
+<div>
+    <form method="post" action="" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.errors }}  
+        {{form.as_p}}
+        <input type="submit" value="Update">
+    </form>
+</div>
+
+{% endblock %}

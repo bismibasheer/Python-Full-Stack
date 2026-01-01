@@ -15,7 +15,7 @@ import pymysql
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+from django.contrib.messages import constants as messages
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'manager',
-    'credentials'
+    'credentials',
+    'user',
 ]
 
 MIDDLEWARE = [
@@ -50,6 +51,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'credentials.middleware.LoginRequiredMiddleware',
 ]
 
 ROOT_URLCONF = 'BookHive.urls'
@@ -70,7 +72,10 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'BookHive.wsgi.application'
-
+MESSAGE_TAGS={
+         messages.ERROR:"danger"
+         
+}
 
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases

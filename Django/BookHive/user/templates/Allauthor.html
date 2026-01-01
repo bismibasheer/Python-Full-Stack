@@ -5,6 +5,12 @@
     <h1>
         All Author
     </h1>
+            {% for msg in messages %}
+                <div class="alert alert-{{msg.tags}}" role="alert">
+                    {{msg}}
+                </div>
+                
+            {% endfor %}
     <main id="list-authors">
         <div class="authors-list">
              <!-- image,name,place are fields or attributes mentioned in Author Class (model) -->
@@ -13,7 +19,7 @@
             <img src="{{written.image.url}}" >
             <h4>{{written.name}}</h4>
             <p>{{written.place}}</p>
-            <a href="{% url 'author-detail' written.slug %}">View Details</a>
+            <a href="{{ written.get_absolute_url}}">View Details</a>
         </div>
         {% endfor %}
     </div>
